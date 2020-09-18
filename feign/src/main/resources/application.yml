@@ -1,0 +1,40 @@
+server:
+  port: 8767
+
+spring:
+  application:
+    name: feign
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+          #错误解码器
+          errorDecoder: com.wudimanong.client.common.FeignClientErrorDecoder
+          #解码器
+          encoder: com.wudimanong.client.common.FeignClientEncoder
+          #编码器
+          decoder: com.wudimanong.client.common.FeignClientDecoder
+  compression:
+    request:
+      enabled: false #是否对请求进行GZIP压缩
+      mime-types: text/xml,application/xml,application/json #指定压缩的请求数据类型
+      min-request-size: 2048 #超过该大小的请求会被压缩
+    response:
+      enabled: false #是否对响应进行GZIP压缩
+logging:
+  level: #修改日志级别 （方式1）
+    com.macro.cloud.service.UserService: debug
