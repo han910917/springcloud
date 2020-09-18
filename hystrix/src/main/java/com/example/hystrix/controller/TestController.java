@@ -20,9 +20,9 @@ public class TestController {
     private RestTemplate restTemplate;
 
     @RequestMapping("/tests")
-    @HystrixCommand(fallbackMethod = "fallbackMethodTest", ignoreExceptions={IndexOutOfBoundsException.class},
+    @HystrixCommand(fallbackMethod = "fallbackMethodTest", ignoreExceptions={NullPointerException.class},
             commandProperties = {
-                    @HystrixProperty(value = "1000", name="timeoutInMilliseconds")
+                    @HystrixProperty(value = "1000", name="execution.isolation.thread.interruptOnTimeout")
             }
     )
     public Object tests(Integer index){
@@ -36,7 +36,7 @@ public class TestController {
         return object;
     }
 
-    public Object fallbackMethodTest(){
+    public Object fallbackMethodTest(Integer index){
         return "hystrix is success !";
     }
 }
