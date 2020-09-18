@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: hystrix
+server:
+  port: 8765
+eureka:
+  client:
+    service-url:
+      defaultZone: localhost:8081/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  service-url:
+    user-service: http://ENURKA-CLIENT
