@@ -1,0 +1,29 @@
+server:
+  port: 8890
+spring:
+  application:
+    name: service-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      serviced: enurka-client
+    api-b:
+      path: /api-b/**
+      serviced: enurka-client
+ribbon:
+  eureka:
+    enabled: false
+api-a:
+  ribbon:
+    listOfServers: http://localhost:8888
+api-b:
+  ribbon:
+    listOfServers: http://localhost:8889
