@@ -22,7 +22,7 @@ public class TestController {
     @RequestMapping("/tests")
     @HystrixCommand(fallbackMethod = "fallbackMethodTest", ignoreExceptions={NullPointerException.class},
             commandProperties = {
-                    @HystrixProperty(value = "1000", name="execution.isolation.thread.interruptOnTimeout")
+                    @HystrixProperty(value = "1000", name="execution.isolation.thread.timeoutInMilliseconds")
             }
     )
     public Object tests(Integer index){
