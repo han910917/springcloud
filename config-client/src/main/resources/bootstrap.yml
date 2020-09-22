@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: mester
+      profile: dev
+      uri: http://localhost:8891
+server:
+  port: 8892
