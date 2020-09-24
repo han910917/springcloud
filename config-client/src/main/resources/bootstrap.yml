@@ -3,8 +3,15 @@ spring:
     name: config-client
   cloud:
     config:
-      label: mester
       profile: dev
-      uri: http://localhost:8891
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
 server:
   port: 8892
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

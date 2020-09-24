@@ -8,10 +8,13 @@ spring:
       server:
         git:
           uri: https://github.com/han910917/config.git
-          username: han910917
-          password: ren1223long
-      label: master
+          username: xxxxx
+          password: xxxxx
+          search-paths: /**
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
